@@ -4,14 +4,6 @@ import vueDevTools from 'vite-plugin-vue-devtools'
 import tailwindcss from '@tailwindcss/vite'
 import devServer from '@hono/vite-dev-server'
 import { getPlatformProxy } from 'wrangler'
-import path from 'path'
-
-const resolve = {
-  alias: {
-    "@": path.resolve(__dirname, "./app"),
-  },
-}
-
 
 // https://vite.dev/config/
 export default defineConfig(async ({ mode }) => {
@@ -22,7 +14,6 @@ export default defineConfig(async ({ mode }) => {
         vueDevTools(),
         tailwindcss()
       ],
-      resolve,
       server: {
         proxy: {
           '/api': {
@@ -39,7 +30,7 @@ export default defineConfig(async ({ mode }) => {
     if (isDev) {
       const { env, dispose } = await getPlatformProxy();
       devServerPlugin = devServer({
-        entry: 'app/api/index.tsx',
+        entry: './src/api/index.ts',
         adapter: {
           env,
           onServerClose: dispose
@@ -51,7 +42,6 @@ export default defineConfig(async ({ mode }) => {
       plugins: [
         devServerPlugin,
       ],
-      resolve,
       server: {
         port: 3001,
       },

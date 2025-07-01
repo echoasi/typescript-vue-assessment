@@ -55,10 +55,10 @@ The project structure is organized as follows:
 
 ### Tasks
 
-Complete as many of the following tasks as you are able to within the alotted time. You will not _not_ assessed on the total number of tasks completed.
+Complete as many of the following tasks as you are able to within the alotted time. You will _not_ be assessed on the total number of tasks completed.
  
 1. Open the reports hook found in `src/hooks/use-reports.hook.ts`
-2. Create an stateful instance of ReportState for sharing among our app
+2. Create a stateful instance of `ReportState` for sharing among our app
 3. Using the HTTP client of your choice (axios, fetch, etc...), create a getReports method to make a GET request to `/api/reports` 
 4. Implement error handling for non-200 API responses
 5. Update the hook to return the state and method
